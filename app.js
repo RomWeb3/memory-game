@@ -37,13 +37,17 @@ startGame(grid4Btn, grid6Btn);
 startGame(grid6Btn, grid4Btn);
 
 startGameBtn.addEventListener("click", () => {
+  if (numbersBtn.classList.contains("checked")) {
+    gameScreen.classList.add("numbers");
+  } else {
+    gameScreen.classList.add("icons");
+  }
   if (grid4Btn.classList.contains("checked")) {
     gameScreen.classList.add("grid-4");
-    newGame();
   } else {
     gameScreen.classList.add("grid-6");
-    newGame();
   }
+  newGame();
   gameStartScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
 });
@@ -113,8 +117,12 @@ function createCards() {
     rows.forEach((row) => {
       for (let i = 0; i < 6; i++) {
         const card = document.createElement("div");
-        card.classList.add("card-6");
+        card.classList.add("card");
         row.appendChild(card);
+        card.style.width = "4.69rem";
+        card.style.height = "4.69rem";
+        card.style.fontSize = "2.4rem";
+        card.style.lineHeight = "3rem";
       }
     });
   }
@@ -129,14 +137,14 @@ function removeCards() {
 
 function generateRandomNumbers() {
   const cards = document.querySelectorAll(".card");
-  const cards6 = document.querySelectorAll(".card-6");
   let ArrayOf4Cards = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
   let ArrayOf6Cards = [
     1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12,
     12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18,
   ];
+  const isGrid4 = gameScreen.classList.contains("grid-4");
 
-  if (gameScreen.classList.contains("grid-4")) {
+  if (isGrid4) {
     cards.forEach((card) => {
       let randomNumber = Math.floor(Math.random() * ArrayOf4Cards.length);
       const p = document.createElement("p");
@@ -144,8 +152,8 @@ function generateRandomNumbers() {
       ArrayOf4Cards.splice(randomNumber, 1);
       card.appendChild(p);
     });
-  } else if (gameScreen.classList.contains("grid-6")) {
-    cards6.forEach((card) => {
+  } else {
+    cards.forEach((card) => {
       let randomNumber = Math.floor(Math.random() * ArrayOf6Cards.length);
       const p = document.createElement("p");
       p.textContent = ArrayOf6Cards[randomNumber];
@@ -153,6 +161,37 @@ function generateRandomNumbers() {
       card.appendChild(p);
     });
   }
+}
+
+function generateRandomIcons() {
+  const cards = document.querySelectorAll(".card");
+  let ArrayOf4Icons = [
+    "car-side",
+    "car-side",
+    "football",
+    "football",
+    "moon",
+    "moon",
+    "star",
+    "star",
+    "snowflake",
+    "snowflake",
+    "cloud",
+    "cloud",
+    "bug",
+    "bug",
+    "heart",
+    "heart",
+  ];
+  let ArrayOf6Icons = [];
+
+  cards.forEach((card) => {
+    let randomNumber = Math.floor(Math.random() * ArrayOf4Icons.length);
+    const i = document.createElement("i");
+    i.classList.add("fa-solid", `fa-${ArrayOf4Icons[randomNumber]}`);
+    ArrayOf4Icons.splice(randomNumber, 1);
+    card.appendChild(i);
+  });
 }
 
 //Game logic
@@ -178,6 +217,21 @@ function game() {
           NumberOfCardsFlipped === 2 &&
           flippedCards[0].children[0].innerHTML ===
             flippedCards[1].children[0].innerHTML
+        ) {
+          cardsFlipped.forEach((card) => {
+            card.classList.add("matched");
+            card.matched = true;
+          });
+        }
+      });
+
+      const cardsIcons = document.querySelectorAll(".card i");
+      cardsIcons.forEach((cardIcon) => {
+        if (
+          gameScreen.classList.contains("icons") &&
+          NumberOfCardsFlipped === 2 &&
+          flippedCards[0].children[0].classList[1] ===
+            flippedCards[1].children[0].classList[1]
         ) {
           cardsFlipped.forEach((card) => {
             card.classList.add("matched");
@@ -225,7 +279,17 @@ function stopChrono() {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       const matchedCards = document.querySelectorAll(".matched").length;
-      if (matchedCards === 16) {
+      if (matchedCards === 16 && gameScreen.classList.contains("grid-4")) {
+        clearInterval(interval);
+        timeElapsed.innerHTML = chrono.innerHTML;
+        movesTotal.innerHTML = movesPlayed.innerHTML + " Moves";
+        setTimeout(() => {
+          modalSoloGameOver.classList.remove("hidden");
+        }, 200);
+      } else if (
+        matchedCards === 36 &&
+        gameScreen.classList.contains("grid-6")
+      ) {
         clearInterval(interval);
         timeElapsed.innerHTML = chrono.innerHTML;
         movesTotal.innerHTML = movesPlayed.innerHTML + " Moves";
@@ -256,7 +320,7 @@ function reset() {
 
 function newGame() {
   createCards();
-  generateRandomNumbers();
+  generateRandomIcons();
   game();
   stopChrono();
 }

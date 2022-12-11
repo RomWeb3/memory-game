@@ -203,40 +203,22 @@ main img {
   cursor: pointer;
 }
 
-.card-6 {
-  width: 4.69rem;
-  height: 4.69rem;
-  border-radius: 50%;
-  background: var(--dark-blue);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.4rem;
-  line-height: 3rem;
-  color: rgba(255, 255, 255, 0);
-  transition: all 200ms ease-in-out;
-  cursor: pointer;
-}
-
 .card p,
-.card-6 p {
+.card i {
   transform: rotateY(180deg);
 }
 
-.card.flip,
-.card-6.flip {
+.card.flip {
   transform: rotateY(180deg);
   background: var(--grey);
   color: var(--white);
 }
 
-.card.flip.matched,
-.card-6.flip.matched {
+.card.flip.matched {
   background: var(--orange);
 }
 
-.card.matched,
-.card-6.matched {
+.card.matched {
   background: var(--orange);
   transform: rotateY(180deg);
   color: var(--white);
