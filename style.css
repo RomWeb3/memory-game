@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  scroll-behavior: auto !important;
+  /* border: 1px solid black; */
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  text-transform: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --orange: #fda214;
+  --grey: #bcced9;
+  --dark-blue: #304859;
+  --very-dark-blue: #152938;
+  --grey-blue: #f2f2f2;
+  --light-blue: #7191a5;
+  --blue: #6395b8;
+  --white: #fcfcfc;
+}
+
+body {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 1.8rem;
+  background: var(--very-dark-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.game-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 2.4rem;
+}
+
+.hidden {
+  display: none;
+}
+
+main img {
+  margin-bottom: 4.5rem;
+}
+
+.start-menu {
+  width: 100%;
+  max-width: 32.7rem;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2.4rem;
+}
+
+.start-menu p {
+  color: var(--light-blue);
+  line-height: 19px;
+  margin-bottom: 1.1rem;
+}
+
+.start-menu button {
+  background: var(--grey);
+  border-radius: 2.6rem;
+  padding: 1rem 0;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--white);
+  cursor: pointer;
+  margin-bottom: 2.4rem;
+}
+
+.start-menu button.checked {
+  background: var(--dark-blue);
+}
+
+.wrap-theme,
+.wrap-players,
+.wrap-grid {
+  display: flex;
+  gap: 1.1rem;
+}
+
+.wrap-theme button,
+.wrap-grid button {
+  width: 13.4rem;
+}
+
+.wrap-players button {
+  width: 6.2rem;
+}
+
+.wrap-grid button {
+  margin-bottom: 3.2rem;
+}
+
+.start-menu .start-game {
+  width: 100%;
+  background: var(--orange);
+  padding: 1.2rem 0 1.4rem;
+  margin-bottom: 0;
+}
+
+.game {
+  background: var(--white);
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game.hidden {
+  display: none;
+}
+
+.desktop {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 32.7rem;
+}
+
+.header p {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--very-dark-blue);
+}
+
+.menu-btn {
+  width: 7.8rem;
+  height: 4rem;
+  background: var(--orange);
+  border-radius: 2.6rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: var(--white);
+}
+
+.body {
+  margin: 8rem 0 10.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.23rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.23rem;
+}
+
+.card {
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 50%;
+  background: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: rgba(255, 255, 255, 0);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.card-6 {
+  width: 4.69rem;
+  height: 4.69rem;
+  border-radius: 50%;
+  background: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.card p,
+.card-6 p {
+  transform: rotateY(180deg);
+}
+
+.card.flip,
+.card-6.flip {
+  transform: rotateY(180deg);
+  background: var(--grey);
+  color: var(--white);
+}
+
+.card.flip.matched,
+.card-6.flip.matched {
+  background: var(--orange);
+}
+
+.card.matched,
+.card-6.matched {
+  background: var(--orange);
+  transform: rotateY(180deg);
+  color: var(--white);
+}
+
+.footer {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.time,
+.moves {
+  width: 15.1rem;
+  height: 7rem;
+  background: #dfe7ec;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.time p,
+.moves p {
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+  color: var(--light-blue);
+}
+
+.timer,
+.moves-played {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--dark-blue);
+}
+
+.modal-menu {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+  max-width: 32.7rem;
+  background: var(--grey-blue);
+  border-radius: 10px;
+  padding: 2.4rem;
+  box-shadow: 1px 1px 1px 1000px rgba(0, 0, 0, 0.5);
+}
+
+.modal-menu.hidden,
+.modal-solo-game-over.hidden {
+  display: none;
+}
+
+.modal-menu button,
+.modal-solo-game-over button {
+  width: 27.9rem;
+  height: 4.8rem;
+  background: #dfe7ec;
+  border-radius: 2.6rem;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: var(--dark-blue);
+}
+
+.modal-menu button:nth-child(1) {
+  background: var(--orange);
+  color: var(--white);
+}
+
+#restart-btn {
+  margin: 2.4rem 0 1.6rem;
+  background: var(--orange);
+  color: var(--white);
+}
+
+.modal-solo-game-over {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 32.7rem;
+  background: var(--grey-blue);
+  border-radius: 10px;
+  padding: 2.4rem;
+  box-shadow: 1px 1px 1px 1000px rgba(0, 0, 0, 0.5);
+}
+
+.modal-solo-game-over h3 {
+  margin: 0.8rem 0 0.9rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--very-dark-blue);
+}
+
+.modal-solo-game-over p {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  color: var(--light-blue);
+}
+
+.time-elapsed,
+.moves-taken {
+  background: #dfe7ec;
+  width: 100%;
+  height: 4.8rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.6rem;
+  margin: 2.4rem 0 0.8rem;
+}
+
+.moves-taken {
+  margin: 0;
+}

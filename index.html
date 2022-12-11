@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" type="module"></script>
+    <title>Frontend Mentor | Memory game</title>
+  </head>
+  <body>
+    <main>
+      <!-- Game setup start -->
+      <div class="game-start">
+        <img src="./assets/logo-mobile.svg" alt="logo" />
+        <div class="start-menu">
+          <p>Select Theme</p>
+          <div class="wrap-theme">
+            <button class="numbers checked" type="button">Numbers</button>
+            <button class="icons" type="button">Icons</button>
+          </div>
+          <p>Number of Players</p>
+          <div class="wrap-players">
+            <button class="one-player checked" type="button">1</button>
+            <button class="two-players" type="button">2</button>
+            <button class="three-players" type="button">3</button>
+            <button class="four-players" type="button">4</button>
+          </div>
+          <p>Grid Size</p>
+          <div class="wrap-grid">
+            <button class="grid-4 checked" type="button">4x4</button>
+            <button class="grid-6" type="button">6x6</button>
+          </div>
+          <button class="start-game" type="button">Start Game</button>
+        </div>
+      </div>
+      <!-- Game setup end -->
+
+      <!-- Modal mobile Menu -->
+      <div class="modal-menu hidden">
+        <button class="restart" type="button">Restart</button>
+        <button class="new-game" type="button">New Game</button>
+        <button id="resume-game" type="button">Resume Game</button>
+      </div>
+
+      <!-- Modal Solo Game Over -->
+      <div class="modal-solo-game-over hidden">
+        <h3>You did it!</h3>
+        <p>Game over! Here's how you got on...</p>
+        <div class="time-elapsed">
+          <p>Time Elapsed</p>
+          <div class="chrono"></div>
+        </div>
+        <div class="moves-taken">
+          <p>Moves Taken</p>
+          <div class="moves-total"></div>
+        </div>
+        <button id="restart-btn" class="restart" type="button">Restart</button>
+        <button class="new-game" type="button">Setup New Game</button>
+      </div>
+
+      <!-- Game board start -->
+      <div class="game hidden">
+        <div class="header">
+          <p>memory</p>
+          <button class="desktop" type="button">Restart</button>
+          <button class="desktop" type="button">New Game</button>
+          <button id="menu" class="menu-btn" type="button">Menu</button>
+        </div>
+
+        <div class="body">
+          <!-- cards are generated with JavaScript -->
+        </div>
+
+        <!-- Multiplayer scores start -->
+        <div class="player-one desktop">Player 1</div>
+        <div class="player-two desktop">Current Turn Player 2</div>
+        <div class="player-three desktop">Current Turn Player 3</div>
+        <div class="player-four desktop">
+          Current Turn Player 4 Current Turn
+        </div>
+
+        <!-- Solo game time and moves counter start -->
+        <div class="footer">
+          <div class="time">
+            <p>Time</p>
+            <div class="timer">0:00</div>
+          </div>
+          <!-- Time elapsed -->
+          <div class="moves">
+            <p>Moves</p>
+            <div class="moves-played">0</div>
+          </div>
+          <!-- Moves total -->
+        </div>
+
+        <!-- Solo game time and moves counter end -->
+      </div>
+      <!-- Game board end -->
+    </main>
+  </body>
+</html>
