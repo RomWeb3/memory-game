@@ -70,7 +70,9 @@ restartBtn.forEach((btn) => {
     modalMenu.classList.add("hidden");
     modalSoloGameOver.classList.add("hidden");
     reset();
-    generateRandomNumbers();
+    gameScreen.classList.contains("numbers")
+      ? generateRandomNumbers()
+      : generateRandomIcons();
   });
 });
 
@@ -80,8 +82,7 @@ newGameBtn.forEach((btn) => {
     modalSoloGameOver.classList.add("hidden");
     gameStartScreen.classList.remove("hidden");
     gameScreen.classList.add("hidden");
-    gameScreen.classList.remove("grid-4");
-    gameScreen.classList.remove("grid-6");
+    gameScreen.classList.remove("grid-4", "grid-6", "numbers", "icons");
     reset();
     removeCards();
   });
@@ -183,15 +184,63 @@ function generateRandomIcons() {
     "heart",
     "heart",
   ];
-  let ArrayOf6Icons = [];
+  let ArrayOf6Icons = [
+    "car-side",
+    "car-side",
+    "football",
+    "football",
+    "moon",
+    "moon",
+    "star",
+    "star",
+    "snowflake",
+    "snowflake",
+    "cloud",
+    "cloud",
+    "bug",
+    "bug",
+    "heart",
+    "heart",
+    "gamepad",
+    "gamepad",
+    "dollar-sign",
+    "dollar-sign",
+    "yen-sign",
+    "yen-sign",
+    "bicycle",
+    "bicycle",
+    "anchor",
+    "anchor",
+    "hashtag",
+    "hashtag",
+    "house",
+    "house",
+    "plane",
+    "plane",
+    "bell",
+    "bell",
+    "gift",
+    "gift",
+  ];
+  const isGrid4 = gameScreen.classList.contains("grid-4");
 
-  cards.forEach((card) => {
-    let randomNumber = Math.floor(Math.random() * ArrayOf4Icons.length);
-    const i = document.createElement("i");
-    i.classList.add("fa-solid", `fa-${ArrayOf4Icons[randomNumber]}`);
-    ArrayOf4Icons.splice(randomNumber, 1);
-    card.appendChild(i);
-  });
+  if (isGrid4) {
+    cards.forEach((card) => {
+      let randomNumber = Math.floor(Math.random() * ArrayOf4Icons.length);
+      const i = document.createElement("i");
+      i.classList.add("fa-solid", `fa-${ArrayOf4Icons[randomNumber]}`);
+      ArrayOf4Icons.splice(randomNumber, 1);
+      card.appendChild(i);
+    });
+  } else {
+    cards.forEach((card) => {
+      let randomNumber = Math.floor(Math.random() * ArrayOf6Icons.length);
+      const i = document.createElement("i");
+      i.classList.add("fa-solid", `fa-${ArrayOf6Icons[randomNumber]}`);
+      ArrayOf6Icons.splice(randomNumber, 1);
+      card.appendChild(i);
+    });
+  }
 }
 
 //Game logic
@@ -320,7 +369,9 @@ function reset() {
 
 function newGame() {
   createCards();
-  generateRandomIcons();
+  gameScreen.classList.contains("numbers")
+    ? generateRandomNumbers()
+    : generateRandomIcons();
   game();
   stopChrono();
 }
