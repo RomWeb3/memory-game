@@ -65,16 +65,22 @@
           <p>Moves Taken</p>
           <div class="moves-total"></div>
         </div>
-        <button id="restart-btn" class="restart" type="button">Restart</button>
-        <button class="new-game" type="button">Setup New Game</button>
+        <div class="modal-buttons">
+          <button id="restart-btn" class="restart" type="button">
+            Restart
+          </button>
+          <button class="new-game" type="button">Setup New Game</button>
+        </div>
       </div>
 
       <!-- Game board start -->
       <div class="game hidden">
         <div class="header">
           <p>memory</p>
-          <button class="desktop" type="button">Restart</button>
-          <button class="desktop" type="button">New Game</button>
+          <div class="desktop-buttons">
+            <button class="restart desktop" type="button">Restart</button>
+            <button class="new-game desktop" type="button">New Game</button>
+          </div>
           <button id="menu" class="menu-btn" type="button">Menu</button>
         </div>
 
@@ -83,11 +89,13 @@
         </div>
 
         <!-- Multiplayer scores start -->
-        <div class="player-one desktop">Player 1</div>
-        <div class="player-two desktop">Current Turn Player 2</div>
-        <div class="player-three desktop">Current Turn Player 3</div>
-        <div class="player-four desktop">
-          Current Turn Player 4 Current Turn
+        <div class="multiplayer-scores hidden">
+          <div class="player-one desktop">Player 1</div>
+          <div class="player-two desktop">Current Turn Player 2</div>
+          <div class="player-three desktop">Current Turn Player 3</div>
+          <div class="player-four desktop">
+            Current Turn Player 4 Current Turn
+          </div>
         </div>
 
         <!-- Solo game time and moves counter start -->
