@@ -201,6 +201,14 @@ main img {
   color: rgba(255, 255, 255, 0);
   transition: all 200ms ease-in-out;
   cursor: pointer;
+  user-select: none;
+}
+
+.card.grid6 {
+  width: 4.69rem;
+  height: 4.69rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
 }
 
 .card p,
@@ -412,7 +420,7 @@ main img {
   }
 
   .header {
-    max-width: 68.9rem;
+    max-width: 111rem;
   }
 
   .header p {
@@ -477,6 +485,22 @@ main img {
 
   .card:not(.flip, .matched):hover {
     background: #6395b8;
+  }
+
+  .game.grid-6 .body {
+    margin: 12.1rem 0 12.2rem;
+    gap: 1.6rem;
+  }
+
+  .game.grid-6 .row {
+    gap: 1.6rem;
+  }
+
+  .card.grid6 {
+    width: 8.2rem;
+    height: 8.2rem;
+    font-size: 4.4rem;
+    line-height: 5.5rem;
   }
 
   .footer {
@@ -552,5 +576,15 @@ main img {
 
   #restart-btn {
     margin: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .body {
+    margin: 10.5rem 0 12.6rem;
+  }
+
+  .game.grid-6 .body {
+    margin: 8.5rem 0 10.6rem;
   }
 }

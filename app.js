@@ -118,12 +118,8 @@ function createCards() {
     rows.forEach((row) => {
       for (let i = 0; i < 6; i++) {
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.classList.add("card", "grid6");
         row.appendChild(card);
-        card.style.width = "4.69rem";
-        card.style.height = "4.69rem";
-        card.style.fontSize = "2.4rem";
-        card.style.lineHeight = "3rem";
       }
     });
   }
