@@ -249,6 +249,11 @@ main img {
   align-items: center;
 }
 
+.game:not(.solo) .time,
+.game:not(.solo) .moves {
+  display: none;
+}
+
 .time p,
 .moves p {
   font-size: 1.5rem;
@@ -256,11 +261,83 @@ main img {
   color: var(--light-blue);
 }
 
-.timer,
-.moves-played {
+.game.solo .footer .timer,
+.game.solo .footer .moves-played {
   font-size: 2.4rem;
   line-height: 3rem;
   color: var(--dark-blue);
+}
+
+.game:not(.duo, .trio, .multiplayer) .multiplayer-scores {
+  display: none;
+}
+
+.multiplayer-scores {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.multiplayer-scores .player-one,
+.player-two,
+.player-three,
+.player-four {
+  background: #dfe7ec;
+  width: 6.4rem;
+  height: 7rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.multiplayer-scores p {
+  color: var(--light-blue);
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+}
+
+.score-p1,
+.score-p2,
+.score-p3,
+.score-p4 {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--dark-blue);
+}
+
+.multiplayer-scores .player-one.active,
+.player-two.active,
+.player-three.active,
+.player-four.active {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.multiplayer-scores .player-one.active::before,
+.player-two.active::before,
+.player-three.active::before,
+.player-four.active::before {
+  content: "";
+  width: 1.6rem;
+  height: 1.6rem;
+  clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+  background: var(--orange);
+  margin-top: -2.5rem;
+}
+
+.multiplayer-scores .player-one.active p,
+.player-two.active p,
+.player-three.active p,
+.player-four.active p {
+  color: var(--white);
+  margin-top: 0.95rem;
+}
+
+.multiplayer-scores .player-one.active .score-p1,
+.player-two.active .score-p2,
+.player-three.active .score-p3,
+.player-four.active .score-p4 {
+  color: var(--white);
 }
 
 .modal-menu {
@@ -278,12 +355,14 @@ main img {
 }
 
 .modal-menu.hidden,
-.modal-solo-game-over.hidden {
+.modal-solo-game-over.hidden,
+.modal-multiplayer-game-over.hidden {
   display: none;
 }
 
 .modal-menu button,
-.modal-solo-game-over button {
+.modal-solo-game-over button,
+.modal-multiplayer-game-over button {
   width: 27.9rem;
   height: 4.8rem;
   background: #dfe7ec;
@@ -304,7 +383,8 @@ main img {
   color: var(--white);
 }
 
-.modal-solo-game-over {
+.modal-solo-game-over,
+.modal-multiplayer-game-over {
   position: absolute;
   z-index: 1000;
   display: flex;
@@ -319,14 +399,16 @@ main img {
   box-shadow: 1px 1px 1px 2000px rgba(0, 0, 0, 0.5);
 }
 
-.modal-solo-game-over h3 {
+.modal-solo-game-over h3,
+.modal-multiplayer-game-over h3 {
   margin: 0.8rem 0 0.9rem;
   font-size: 2.4rem;
   line-height: 3rem;
   color: var(--very-dark-blue);
 }
 
-.modal-solo-game-over p {
+.modal-solo-game-over p,
+.modal-multiplayer-game-over p {
   font-size: 1.4rem;
   line-height: 1.7rem;
   color: var(--light-blue);
@@ -343,10 +425,46 @@ main img {
   align-items: center;
   padding: 0 1.6rem;
   margin: 2.4rem 0 0.8rem;
+  border-radius: 5px;
 }
 
 .moves-taken {
   margin: 0;
+}
+
+.player1 {
+  margin-top: 2.4rem;
+}
+
+.player1,
+.player2,
+.player3,
+.player4 {
+  background: #dfe7ec;
+  width: 100%;
+  height: 4.8rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.6rem;
+  border-radius: 5px;
+  margin-bottom: 0.8rem;
+}
+
+.player1.active,
+.player2.active,
+.player3.active,
+.player4.active {
+  background: var(--very-dark-blue);
+  color: var(--white);
+}
+
+.player1.active p,
+.player2.active p,
+.player3.active p,
+.player4.active p {
+  color: var(--white);
 }
 
 @media screen and (max-width: 374px) {
