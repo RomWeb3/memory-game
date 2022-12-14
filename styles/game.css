@@ -1,0 +1,207 @@
+.game {
+  background: var(--white);
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game.hidden {
+  display: none;
+}
+
+.desktop {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 32.7rem;
+}
+
+.header p {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--very-dark-blue);
+}
+
+.menu-btn {
+  width: 7.8rem;
+  height: 4rem;
+  background: var(--orange);
+  border-radius: 2.6rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: var(--white);
+}
+
+.body {
+  margin: 8rem 0 10.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.23rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.23rem;
+}
+
+.card {
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 50%;
+  background: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: rgba(255, 255, 255, 0);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card.grid6 {
+  width: 4.69rem;
+  height: 4.69rem;
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.card p,
+.card i {
+  transform: rotateY(180deg);
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+  background: var(--grey);
+  color: var(--white);
+}
+
+.card.flip.matched {
+  background: var(--orange);
+}
+
+.card.matched {
+  background: var(--orange);
+  transform: rotateY(180deg);
+  color: var(--white);
+}
+
+.footer {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.time,
+.moves {
+  width: 15.1rem;
+  height: 7rem;
+  background: #dfe7ec;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game:not(.solo) .time,
+.game:not(.solo) .moves {
+  display: none;
+}
+
+.time p,
+.moves p {
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+  color: var(--light-blue);
+}
+
+.game.solo .footer .timer,
+.game.solo .footer .moves-played {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--dark-blue);
+}
+
+.game:not(.duo, .trio, .multiplayer) .multiplayer-scores {
+  display: none;
+}
+
+.multiplayer-scores {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.multiplayer-scores .player-one,
+.player-two,
+.player-three,
+.player-four {
+  background: #dfe7ec;
+  width: 6.4rem;
+  height: 7rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.multiplayer-scores p {
+  color: var(--light-blue);
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+}
+
+.score-p1,
+.score-p2,
+.score-p3,
+.score-p4 {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: var(--dark-blue);
+}
+
+.multiplayer-scores .player-one.active,
+.player-two.active,
+.player-three.active,
+.player-four.active {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.multiplayer-scores .player-one.active::before,
+.player-two.active::before,
+.player-three.active::before,
+.player-four.active::before {
+  content: "";
+  width: 1.6rem;
+  height: 1.6rem;
+  clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+  background: var(--orange);
+  margin-top: -2.5rem;
+}
+
+.multiplayer-scores .player-one.active p,
+.player-two.active p,
+.player-three.active p,
+.player-four.active p {
+  color: var(--white);
+  margin-top: 0.95rem;
+}
+
+.multiplayer-scores .player-one.active .score-p1,
+.player-two.active .score-p2,
+.player-three.active .score-p3,
+.player-four.active .score-p4 {
+  color: var(--white);
+}
