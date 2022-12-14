@@ -489,12 +489,58 @@ function stopChrono() {
   });
 }
 
+const winner = document.querySelector("#winner");
+const playerOne = document.querySelector(".player1");
+const playerTwo = document.querySelector(".player2");
+const playerThree = document.querySelector(".player3");
+const playerFour = document.querySelector(".player4");
+
 function updateModalMultiplayer() {
+  let scores = [];
   if (!gameScreen.classList.contains("solo")) {
     movesP1.textContent = scoreP1.textContent + " Pairs";
     movesP2.textContent = scoreP2.textContent + " Pairs";
     movesP3.textContent = scoreP3.textContent + " Pairs";
     movesP4.textContent = scoreP4.textContent + " Pairs";
+    scores.push(scoreP1.textContent);
+    scores.push(scoreP2.textContent);
+    scores.push(scoreP3.textContent);
+    scores.push(scoreP4.textContent);
+
+    const scoreMax = Math.max(...scores);
+    const tieOrNot =
+      scores.filter((score) => score == Math.max(...scores)).length > 1
+        ? "Tie"
+        : "No Tie";
+    if (tieOrNot === "Tie") {
+      winner.textContent = "it's a tie!";
+      if (scoreMax == scoreP1.textContent) {
+        playerOne.classList.add("active");
+      }
+      if (scoreMax == scoreP2.textContent) {
+        playerTwo.classList.add("active");
+      }
+      if (scoreMax == scoreP3.textContent) {
+        playerThree.classList.add("active");
+      }
+      if (scoreMax == scoreP4.textContent) {
+        playerFour.classList.add("active");
+      }
+    } else {
+      if (scoreMax == scoreP1.textContent) {
+        winner.textContent = "Player 1 Wins!";
+        playerOne.classList.add("active");
+      } else if (scoreMax == scoreP2.textContent) {
+        winner.textContent = "Player 2 Wins!";
+        playerTwo.classList.add("active");
+      } else if (scoreMax == scoreP3.textContent) {
+        winner.textContent = "Player 3 Wins!";
+        playerThree.classList.add("active");
+      } else if (scoreMax == scoreP4.textContent) {
+        winner.textContent = "Player 4 Wins!";
+        playerFour.classList.add("active");
+      }
+    }
   }
 }
 
@@ -504,11 +550,15 @@ function reset() {
   player2Turn = false;
   player3Turn = false;
   player4Turn = false;
+  playerOne.classList.remove("active");
+  playerTwo.classList.remove("active");
+  playerThree.classList.remove("active");
+  playerFour.classList.remove("active");
   scoreP1.textContent = 0;
   scoreP2.textContent = 0;
   scoreP3.textContent = 0;
   scoreP4.textContent = 0;
-  playerTurn();
+  playerTurn(player1Turn, player1, player2, player3, player4);
   moves = 0;
   movesPlayed.textContent = moves;
   min = 0;

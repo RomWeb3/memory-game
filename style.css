@@ -290,6 +290,7 @@ main img {
   justify-content: center;
   align-items: center;
 }
+
 .multiplayer-scores p {
   color: var(--light-blue);
   font-size: 1.5rem;
@@ -477,6 +478,10 @@ main img {
   .moves {
     width: calc(100vw * 0.403);
   }
+
+  .multiplayer-scores {
+    gap: 1rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -647,18 +652,21 @@ main img {
     line-height: 4rem;
   }
 
-  .modal-solo-game-over {
+  .modal-solo-game-over,
+  .modal-multiplayer-game-over {
     max-width: 65.4rem;
     padding: 5.1rem 5.6rem 6.9rem;
   }
 
-  .modal-solo-game-over h3 {
+  .modal-solo-game-over h3,
+  .modal-multiplayer-game-over h3 {
     font-size: 4.8rem;
     line-height: 6rem;
     margin: 0 0 1.6rem;
   }
 
-  .modal-solo-game-over p {
+  .modal-solo-game-over p,
+  .modal-multiplayer-game-over p {
     font-size: 1.8rem;
     line-height: 2.2rem;
   }
@@ -675,7 +683,11 @@ main img {
   }
 
   .moves-total,
-  .chrono {
+  .chrono,
+  .moves-p1,
+  .moves-p2,
+  .moves-p3,
+  .moves-p4 {
     font-size: 3.2rem;
     line-height: 4rem;
   }
@@ -692,8 +704,58 @@ main img {
     cursor: pointer;
   }
 
+  .modal-buttons button:hover {
+    background: #6395b8;
+    color: var(--white);
+  }
+
   #restart-btn {
     margin: 0;
+  }
+
+  #restart-btn:hover {
+    background: #ffb84a;
+  }
+
+  .player1,
+  .player2,
+  .player3,
+  .player4 {
+    height: 7.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.6rem;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .multiplayer-scores .player-one,
+  .player-two,
+  .player-three,
+  .player-four {
+    width: 16.4rem;
+    height: 8rem;
+    border-radius: 10px;
+    align-items: flex-start;
+    padding: 0 1.6rem;
+  }
+
+  .multiplayer-scores .player-one.active p,
+  .player-two.active p,
+  .player-three.active p,
+  .player-four.active p {
+    margin-top: 1.5rem;
+  }
+
+  .multiplayer-scores .player-one.active::before,
+  .player-two.active::before,
+  .player-three.active::before,
+  .player-four.active::before {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: -3.9rem;
+    margin-left: 5.3rem;
   }
 }
 
@@ -704,5 +766,48 @@ main img {
 
   .game.grid-6 .body {
     margin: 8.5rem 0 10.6rem;
+  }
+
+  .multiplayer-scores .player-one,
+  .player-two,
+  .player-three,
+  .player-four {
+    width: 25.5rem;
+    height: 7.2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.4rem 0 2.1rem;
+  }
+
+  .multiplayer-scores p {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+
+  .score-p1,
+  .score-p2,
+  .score-p3,
+  .score-p4 {
+    font-size: 3.2rem;
+    line-height: 4rem;
+  }
+
+  .multiplayer-scores .player-one.active::before,
+  .player-two.active::before,
+  .player-three.active::before,
+  .player-four.active::before {
+    width: 3.85rem;
+    height: 3.85rem;
+    margin-top: -10.95rem;
+    margin-left: 8.6rem;
+  }
+
+  .multiplayer-scores .player-one.active p,
+  .player-two.active p,
+  .player-three.active p,
+  .player-four.active p {
+    margin-top: 0;
+    margin-left: -24.5rem;
   }
 }
