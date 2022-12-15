@@ -85,6 +85,7 @@
   transform: rotateY(180deg);
   background: var(--grey);
   color: var(--white);
+  pointer-events: none;
 }
 
 .card.flip.matched {

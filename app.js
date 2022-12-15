@@ -310,32 +310,28 @@ function game() {
 function checkPairs() {
   const NumberOfCardsFlipped = document.querySelectorAll(".flip").length;
   const cardsFlipped = document.querySelectorAll(".flip");
-  const cardsNumbers = document.querySelectorAll(".card p");
-  cardsNumbers.forEach((cardNumber) => {
-    if (
-      NumberOfCardsFlipped === 2 &&
-      flippedCards[0].children[0].innerHTML ===
-        flippedCards[1].children[0].innerHTML
-    ) {
+  if (
+    gameScreen.classList.contains("numbers") &&
+    NumberOfCardsFlipped === 2 &&
+    flippedCards[0].children[0].innerHTML ===
+      flippedCards[1].children[0].innerHTML
+  )
+    if (gameScreen.classList.contains("numbers")) {
       cardsFlipped.forEach((card) => {
         card.classList.add("matched");
       });
     }
-  });
 
-  const cardsIcons = document.querySelectorAll(".card i");
-  cardsIcons.forEach((cardIcon) => {
-    if (
-      gameScreen.classList.contains("icons") &&
-      NumberOfCardsFlipped === 2 &&
-      flippedCards[0].children[0].classList[1] ===
-        flippedCards[1].children[0].classList[1]
-    ) {
-      cardsFlipped.forEach((card) => {
-        card.classList.add("matched");
-      });
-    }
-  });
+  if (
+    gameScreen.classList.contains("icons") &&
+    NumberOfCardsFlipped === 2 &&
+    flippedCards[0].children[0].classList[1] ===
+      flippedCards[1].children[0].classList[1]
+  ) {
+    cardsFlipped.forEach((card) => {
+      card.classList.add("matched");
+    });
+  }
 
   if (NumberOfCardsFlipped >= 2) {
     moves++;
